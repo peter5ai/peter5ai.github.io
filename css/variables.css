@@ -1,0 +1,89 @@
+/* ========================================
+   CSS Variables - Peter Personal Website
+   ======================================== */
+
+:root {
+  /* Primary Colors - Deep Blue Tech Theme */
+  --color-primary-dark: #0A1628;
+  --color-primary: #1A365D;
+  --color-primary-light: #2D4A7C;
+  --color-primary-lighter: #3D5A8C;
+
+  /* Accent Colors - From Logo */
+  --color-accent: #00D4FF;
+  --color-accent-dark: #0066FF;
+  --color-accent-glow: rgba(0, 212, 255, 0.3);
+
+  /* Text Colors */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A0AEC0;
+  --color-text-muted: #718096;
+
+  /* Background & Surface */
+  --color-surface: #1E3A5F;
+  --color-surface-light: #2D4A7C;
+  --color-border: #2D3748;
+
+  /* Gradients */
+  --gradient-logo: linear-gradient(135deg, #00D4FF 0%, #0066FF 100%);
+  --gradient-hero: linear-gradient(180deg, #0A1628 0%, #1A365D 50%, #0A1628 100%);
+  --gradient-card: linear-gradient(145deg, #1E3A5F 0%, #2D4A7C 100%);
+  --gradient-glow: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+
+  /* Typography */
+  --font-serif: 'Noto Serif SC', 'Playfair Display', serif;
+  --font-sans: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
+  --text-6xl: 4rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Z-Index */
+  --z-navbar: 100;
+  --z-modal: 200;
+  --z-tooltip: 300;
+
+  /* Container */
+  --container-max: 1200px;
+  --container-padding: 1.5rem;
+}
