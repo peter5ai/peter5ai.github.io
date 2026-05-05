@@ -252,6 +252,121 @@
   }
 }
 
+/* ===== Background Music Player ===== */
+.music-player {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.music-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--c-accent, #00D4FF);
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(10px);
+  color: var(--c-accent, #00D4FF);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+}
+
+.music-btn:hover {
+  background: rgba(0, 212, 255, 0.15);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3);
+}
+
+.music-btn.playing {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(0, 212, 255, 0.5);
+  }
+}
+
+.music-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Music bars animation */
+.music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+}
+
+.music-bars span {
+  width: 3px;
+  background: var(--c-accent, #00D4FF);
+  border-radius: 1px;
+  animation: music-bar 0.8s ease-in-out infinite alternate;
+}
+
+.music-bars span:nth-child(1) {
+  height: 6px;
+  animation-delay: 0s;
+}
+
+.music-bars span:nth-child(2) {
+  height: 12px;
+  animation-delay: 0.2s;
+}
+
+.music-bars span:nth-child(3) {
+  height: 8px;
+  animation-delay: 0.4s;
+}
+
+.music-bars span:nth-child(4) {
+  height: 14px;
+  animation-delay: 0.1s;
+}
+
+.music-bars.paused span {
+  animation: none;
+  height: 3px;
+}
+
+@keyframes music-bar {
+  0% {
+    height: 3px;
+  }
+  100% {
+    height: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .music-player {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .music-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
 /* ===== Reduced Motion ===== */
 @media (prefers-reduced-motion: reduce) {
   *,

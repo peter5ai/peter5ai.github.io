@@ -14,6 +14,11 @@
   --color-accent-dark: #0066FF;
   --color-accent-glow: rgba(0, 212, 255, 0.3);
 
+  /* Legacy Variables for Stats Section */
+  --c-dark: var(--color-primary-dark);
+  --c-text2: var(--color-text-secondary);
+  --c-accent: var(--color-accent);
+
   /* Text Colors */
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #A0AEC0;

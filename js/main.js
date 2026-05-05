@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initSmoothScroll();
   initScrollAnimations();
   initMobileMenu();
+  initLeadForm();
+  initMusicPlayer();
 });
 
 /* ===== Navbar Scroll Effect ===== */
@@ -94,7 +96,7 @@ function updateActiveNavLink() {
 
   navLinks.forEach(link => {
     link.classList.remove('active');
-    if (link.getAttribute('href') === `#${currentSection}`) {
+    if (link.getAttribute('href') === '#' + currentSection) {
       link.classList.add('active');
     }
   });
@@ -117,7 +119,7 @@ function initScrollAnimations() {
         if (entry.target.classList.contains('card-animated')) {
           const cards = entry.target.parentElement.querySelectorAll('.card-animated');
           const cardIndex = Array.from(cards).indexOf(entry.target);
-          entry.target.style.animationDelay = `${cardIndex * 0.15}s`;
+          entry.target.style.animationDelay = (cardIndex * 0.15) + 's';
         }
 
         entry.target.classList.add('visible');
@@ -150,6 +152,153 @@ function initMobileMenu() {
       }
     });
   }
+}
+
+/* ===== Lead Form ===== */
+function initLeadForm() {
+  const wechatId = 'TD16130';
+  const copyLeadMsgBtn = document.getElementById('copyLeadMsg');
+  const copyWechatBtn = document.getElementById('copyWechat');
+  const emailLead = document.getElementById('emailLead');
+  const toast = document.getElementById('leadToast');
+
+  if (!copyLeadMsgBtn || !copyWechatBtn || !emailLead) return;
+
+  function showToast(text) {
+    if (!toast) return;
+    toast.textContent = text;
+    toast.classList.add('show');
+    window.setTimeout(() => toast.classList.remove('show'), 1600);
+  }
+
+  function safeValue(id) {
+    const el = document.getElementById(id);
+    return el ? (el.value || '').trim() : '';
+  }
+
+  function buildMessage() {
+    const company = safeValue('leadCompany');
+    const role = safeValue('leadRole');
+    const city = safeValue('leadCity');
+    const contact = safeValue('leadContact');
+    const scenario = safeValue('leadScenario');
+    const pain = safeValue('leadPain');
+
+    const lines = [
+      '你好彼得，我想预约30分钟AI落地诊断。',
+      company ? '公司/工厂：' + company : null,
+      role ? '岗位：' + role : null,
+      city ? '城市：' + city : null,
+      contact ? '联系方式：' + contact : null,
+      scenario ? '优先场景：' + scenario : null,
+      pain ? '当前痛点：' + pain : null,
+      '方便的话请给我一个建议：先做哪个切口、怎么验收、需要我准备哪些资料。'
+    ].filter(Boolean);
+
+    return lines.join('\n');
+  }
+
+  async function copyText(text) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (_) {}
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  copyLeadMsgBtn.addEventListener('click', async function() {
+    const msg = buildMessage();
+    const ok = await copyText(msg);
+    showToast(ok ? '已复制咨询话术' : '复制失败，请手动复制');
+  });
+
+  copyWechatBtn.addEventListener('click', async function() {
+    const ok = await copyText(wechatId);
+    showToast(ok ? '已复制微信号' : '复制失败，请手动复制');
+  });
+
+  emailLead.addEventListener('click', function() {
+    const msg = buildMessage();
+    const subject = encodeURIComponent('预约30分钟AI落地诊断');
+    const body = encodeURIComponent(msg);
+    emailLead.href = 'mailto:peter5ai@qq.com?subject=' + subject + '&body=' + body;
+  });
+}
+
+/* ===== Background Music Player ===== */
+function initMusicPlayer() {
+  const audio = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+  const musicBars = document.getElementById('musicBars');
+  
+  if (!audio || !musicBtn) return;
+
+  let isPlaying = false;
+
+  function updateUI() {
+    if (isPlaying) {
+      musicBtn.classList.add('playing');
+      if (musicBars) {
+        musicBars.classList.remove('paused');
+      }
+      // Update icon to pause
+      musicBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+    } else {
+      musicBtn.classList.remove('playing');
+      if (musicBars) {
+        musicBars.classList.add('paused');
+      }
+      // Update icon to play
+      musicBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    }
+  }
+
+  musicBtn.addEventListener('click', async function() {
+    try {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        // Try to play audio
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            isPlaying = true;
+          }).catch((error) => {
+            console.log('Audio play failed:', error);
+            // Still update UI to show playing state for demo
+            isPlaying = true;
+          });
+        } else {
+          isPlaying = true;
+        }
+      }
+      updateUI();
+    } catch (e) {
+      console.error('Music player error:', e);
+      // Toggle UI anyway
+      isPlaying = !isPlaying;
+      updateUI();
+    }
+  });
+
+  // Initial UI
+  updateUI();
 }
 
 /* ===== Utility Functions ===== */
