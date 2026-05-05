@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initMobileMenu();
   initLeadForm();
   initMusicPlayer();
+  initYear();
 });
 
 /* ===== Navbar Scroll Effect ===== */
@@ -326,4 +327,12 @@ function throttle(func, limit) {
       setTimeout(() => inThrottle = false, limit);
     }
   };
+}
+
+/* ===== Footer Year ===== */
+function initYear() {
+  const yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 }
