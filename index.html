@@ -1391,12 +1391,12 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 }
 
 /* ===== Stats ===== */
-.stats{padding:4rem 0;background:var(--c-dark);position:relative}
+.stats{padding:4rem 0;background:var(--color-primary-dark);position:relative}
 .stats::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,.3),transparent)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
 .stat-item{padding:2rem 1rem}
-.stat-number{display:block;font-family:var(--font-s);font-size:3rem;font-weight:700;background:linear-gradient(135deg,#00D4FF,#0066FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem;line-height:1.2}
-.stat-label{display:block;color:var(--c-text2);font-size:.95rem;font-weight:500}
+.stat-number{display:block;font-family:var(--font-serif);font-size:3rem;font-weight:700;background:linear-gradient(135deg,#00D4FF,#0066FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem;line-height:1.2}
+.stat-label{display:block;color:var(--color-text-secondary);font-size:.95rem;font-weight:500}
 @media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:1rem}.stat-number{font-size:2.25rem}}
 
 /* ===== Footer ===== */
@@ -2000,10 +2000,10 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 2px solid var(--c-accent, #00D4FF);
+  border: 2px solid var(--color-accent);
   background: rgba(10, 22, 40, 0.85);
   backdrop-filter: blur(10px);
-  color: var(--c-accent, #00D4FF);
+  color: var(--color-accent);
   font-size: 18px;
   cursor: pointer;
   display: flex;
@@ -2044,7 +2044,7 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 
 .music-bars span {
   width: 3px;
-  background: var(--c-accent, #00D4FF);
+  background: var(--color-accent);
   border-radius: 1px;
   animation: music-bar 0.8s ease-in-out infinite alternate;
 }
@@ -2639,8 +2639,8 @@ function throttle(func, limit) {
 </audio>
 <div class="music-player" id="musicPlayer">
   <button class="music-btn" id="musicBtn" aria-label="播放/暂停背景音乐">
-    <svg id="musicIconPlay" viewBox="0 0 24 24" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
-    <svg id="musicIconPause" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    <svg id="musicIconPlay" viewBox="0 0 24 24" style="display:none;" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="musicIconPause" viewBox="0 0 24 24" style="display:none;" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     <div class="music-bars" id="musicBars">
       <span></span><span></span><span></span><span></span>
     </div>
@@ -2711,6 +2711,6 @@ function throttle(func, limit) {
   });
 })();
 </script>
-
+<script src="js/main.js"></script>
 </body>
 </html>
