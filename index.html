@@ -2,7 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="Peter - 深耕企业落地的AI智能体架构师，中山市彼得人工智能科技有限公司创始人。">
 <title>Peter - AI智能体架构师</title>
 <style>
@@ -116,6 +118,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -127,6 +131,142 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden !important;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* Extra protection for all elements on mobile */
+  * {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Ensure grids don't cause overflow */
+  .grid-3,
+  .grid-2,
+  .pain-grid,
+  .services-grid,
+  .cases-grid,
+  .values-grid,
+  .stats-grid,
+  .lead-steps {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Make sure cards and containers don't overflow */
+  .card,
+  .deliver-card,
+  .contact-cta {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Images should never overflow on mobile */
+  img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Hero avatar optimization */
+  .hero-avatar {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Navigation protection */
+  .navbar {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Container padding adjustment */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Fix for horizontal overflow */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Root level protection */
+html {
+  width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Prevent any container from overflowing */
+.container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+section {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all images and media fit */
+img,
+video,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Text elements should wrap properly */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Prevent table overflow */
+table {
+  width: 100%;
+  table-layout: fixed;
+  overflow-x: auto;
+}
+
+/* Fix for form elements */
+input,
+select,
+textarea {
+  max-width: 100%;
 }
 
 /* Typography */
@@ -164,6 +304,21 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  object-fit: contain;
+}
+
+/* Better image handling on mobile */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Make sure picture element is also responsive */
+picture {
+  display: block;
+  max-width: 100%;
 }
 
 /* Lists */
@@ -201,12 +356,16 @@ ul, ol {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Section Base */
 section {
   padding: var(--space-24) 0;
   position: relative;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Utility Classes */
