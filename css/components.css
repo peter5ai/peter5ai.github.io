@@ -12,11 +12,13 @@
   padding: var(--space-4) 0;
   background: transparent;
   transition: all var(--transition-base);
+  will-change: background, transform;
 }
 
 .navbar.scrolled {
   background: rgba(10, 22, 40, 0.95);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 212, 255, 0.1);
   box-shadow: var(--shadow-lg);
 }
@@ -31,6 +33,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navbar-logo img {
@@ -62,6 +65,10 @@
   text-transform: uppercase;
   position: relative;
   padding: var(--space-2) 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navbar-nav a::after {
@@ -93,7 +100,10 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--space-2);
+  padding: var(--space-3);
+  min-height: 44px;
+  min-width: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navbar-toggle span {
@@ -102,6 +112,19 @@
   height: 2px;
   background: var(--color-text-primary);
   transition: all var(--transition-fast);
+}
+
+/* Hamburger Animation */
+.navbar-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ===== Buttons ===== */
@@ -121,6 +144,9 @@
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
+  min-height: 44px;
+  min-width: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary {
@@ -280,8 +306,9 @@
     flex-direction: column;
     justify-content: center;
     padding: var(--space-8);
-    transition: right var(--transition-base);
+    transition: right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border-left: 1px solid rgba(0, 212, 255, 0.1);
+    will-change: right;
   }
 
   .navbar-nav.active {
