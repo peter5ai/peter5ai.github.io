@@ -594,13 +594,14 @@ section {
 
 /* ===== Hero Section ===== */
 .hero {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   position: relative;
   background: var(--gradient-hero);
   overflow: hidden;
   padding-top: 80px;
+  padding-bottom: 2.5rem;
 }
 
 .hero::before {
@@ -623,8 +624,8 @@ section {
 
 .hero-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
   align-items: center;
 }
 
@@ -636,7 +637,7 @@ section {
 
 .hero-avatar {
   position: relative;
-  max-width: 450px;
+  max-width: 260px;
   width: 100%;
 }
 
@@ -652,10 +653,10 @@ section {
 .hero-avatar::before {
   content: '';
   position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
   border: 2px solid rgba(0, 212, 255, 0.2);
   border-radius: var(--radius-xl);
   animation: pulse-border 3s ease-in-out infinite;
@@ -667,7 +668,8 @@ section {
 }
 
 .hero-text {
-  padding-left: var(--space-8);
+  padding-left: 0;
+  text-align: center;
 }
 
 .hero-greeting {
@@ -692,7 +694,7 @@ section {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: var(--text-6xl);
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: var(--space-4);
@@ -700,7 +702,7 @@ section {
 
 .hero-title-en {
   font-family: 'Microsoft YaHei', '微软雅黑', var(--font-sans);
-  font-size: var(--text-3xl);
+  font-size: 1rem;
   font-weight: 400;
   font-style: normal;
   color: var(--color-text-secondary);
@@ -712,7 +714,7 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 }
 
 .hero-subtitle {
-  font-size: var(--text-xl);
+  font-size: 1rem;
   color: var(--color-text-secondary);
   margin-bottom: var(--space-8);
   line-height: 1.6;
@@ -775,10 +777,10 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 
 .pain-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-5);
   margin: 0 auto var(--space-10);
-  max-width: 980px;
+  max-width: 100%;
 }
 
 .pain-item {
@@ -932,10 +934,11 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
   align-items: center;
   margin-bottom: var(--space-16);
+  text-align: center;
 }
 
 .about-text h2 {
@@ -982,8 +985,10 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-8);
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 /* ===== Services Section ===== */
@@ -1006,8 +1011,10 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-8);
+  max-width: 500px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }
@@ -1080,8 +1087,10 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 
 .cases-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-8);
+  max-width: 500px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }
@@ -1186,7 +1195,7 @@ section#hero p.hero-title-en.animate-fade-up.delay-2 {
 
 .contact-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-16);
   align-items: start;
 }
